@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "BenefitMall";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div id="wrapper" class="container">
+	<div id="three-column" class="container">
+	    <div id="tbox1">
+	        <span class="icon icon-key"></span>
+@*	        <div class="title">
+	            <h2>Home</h2>
+	        </div>*@
+	        <p></p>
+	        <a href="@Url.Action("Register","Account")" class="button">Register</a> 
+	    </div>
+		<div id="tbox2"> <span class="icon icon-eye-open"></span>
+@*			<div class="title">
+				<h2>Search</h2>
+			</div>*@
+			<p></p>
+			<a href="@Url.Action("Index","Search")" class="button">Search</a> </div>
+		<div id="tbox3"> <span class="icon icon-phone"></span>
+@*			<div class="title">
+				<h2>Help</h2>
+			</div>*@
+			<p></p>
+			<a href="@Url.Action("Contact","Home")" class="button">Help</a> </div>
+	</div>
+@*	<div id="page">
+		<div><span class="arrow-down"></span></div>
+		<div id="box1">
+			<div class="title">
+				<h2>Welcome to our website</h2>
+				<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span> </div>
+			<p>This is <strong>Justifiable</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
+			<a href="#" class="button">Learn More</a>
+		</div>
+		<div id="box2">
+			<div class="title">
+				<h2>Fusce ultrices fringilla</h2>
+				<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span> </div>
+			<p>Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Suspendisse iaculis mauris nec lorem. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Curabitur sit amet nulla. Nam in massa.</p>	
+			<a href="#" class="button">Learn More</a>
+		</div>
+	</div>*@
+@*	<div id="portfolio">
+		<div><span class="arrow-down"></span></div>
+		<div class="title">
+			<h2>Our Latest Work</h2>
+			<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span> </div>
+		<ul>
+			<li class="current_item"><a href="#" class="image image-full"><img src="images/pic01.jpg" alt="" /></a></li>
+			<li><a href="#" class="image image-full"><img src="images/pic02.jpg" alt="" /></a></li>
+			<li><a href="#" class="image image-full"><img src="images/pic03.jpg" alt="" /></a></li>
+			<li><a href="#" class="image image-full"><img src="images/pic04.jpg" alt="" /></a></li>
+			<li><a href="#" class="image image-full"><img src="images/pic05.jpg" alt="" /></a></li>
+			<li><a href="#" class="image image-full"><img src="images/pic06.jpg" alt="" /></a></li>
+		</ul>
+		<div class="content">
+			<p>Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Suspendisse iaculis mauris nec lorem. Vestibulum suscipit volutpat nulla.</p>
+			<div class="actions"> <a href="#" class="button button-big">Get Started</a> <a href="#" class="button button-big button-alt">Learn More</a> </div>
+		</div>
+	</div>*@
+</div>
+
+
+@*@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>HelpDesk Broker Query</h1>
+                <br/><br/>
+                <h2>@ViewBag.Message</h2>
+                <img src="@Url.Content("~/Images/keys.jpg")" />
+                
+                <div class="arside">
+                    <h3>Options:</h3>
+                    <ul>
+                        <li>@Html.ActionLink("Search", "Index", "Search")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </hgroup>
+            <p>
+                To learn more about ASP.NET MVC visit
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+                If you have any questions about ASP.NET MVC visit
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+            </p>
+
+        </div>
+    </section>
+}*@
+
+
+
+@*<h3>We suggest the following:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Getting Started</h5>
+        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+        enables a clean separation of concerns and that gives you full control over markup
+        for enjoyable, agile development. ASP.NET MVC includes many features that enable
+        fast, TDD-friendly development for creating sophisticated applications that use
+        the latest web standards.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
+    </li>
+
+    <li class="two">
+        <h5>Add NuGet packages and jump-start your coding</h5>
+        NuGet makes it easy to install and update free libraries and tools.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
+    </li>
+
+    <li class="three">
+        <h5>Find Web Hosting</h5>
+        You can easily find a web hosting company that offers the right mix of features
+        and price for your applications.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
+    </li>
+</ol>*@

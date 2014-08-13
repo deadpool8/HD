@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenefitMall.HDQuery.Web", "HDQuery\BenefitMall.HDQuery.Web.csproj", "{D9D0430B-EC25-4C65-BBB3-962B4DC6F28D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenefitMall.HDQuery.Tests", "HDQuery.Tests\BenefitMall.HDQuery.Tests.csproj", "{F9568501-6F1B-42B1-9610-67E2360C83BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenefitMall.HDQuery.Data", "BenefitMall.HDQuery.Domain\BenefitMall.HDQuery.Data.csproj", "{209B39BA-545F-4347-9B14-A590CF980614}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9D0430B-EC25-4C65-BBB3-962B4DC6F28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D0430B-EC25-4C65-BBB3-962B4DC6F28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D0430B-EC25-4C65-BBB3-962B4DC6F28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D0430B-EC25-4C65-BBB3-962B4DC6F28D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9568501-6F1B-42B1-9610-67E2360C83BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9568501-6F1B-42B1-9610-67E2360C83BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9568501-6F1B-42B1-9610-67E2360C83BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9568501-6F1B-42B1-9610-67E2360C83BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{209B39BA-545F-4347-9B14-A590CF980614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209B39BA-545F-4347-9B14-A590CF980614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209B39BA-545F-4347-9B14-A590CF980614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209B39BA-545F-4347-9B14-A590CF980614}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

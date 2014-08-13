@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BrassModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BrassModelStoreContainer">
+          <EntitySet Name="Broker" EntityType="BrassModel.Store.Broker" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BrokerAddress" EntityType="BrassModel.Store.BrokerAddress" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="License" EntityType="BrassModel.Store.License" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BROKER_LICENSED_LICENSE" Association="BrassModel.Store.FK_BROKER_LICENSED_LICENSE">
+            <End Role="Broker" EntitySet="Broker" />
+            <End Role="License" EntitySet="License" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Broker_LocatedAt_BrokerAddress" Association="BrassModel.Store.FK_Broker_LocatedAt_BrokerAddress">
+            <End Role="Broker" EntitySet="Broker" />
+            <End Role="BrokerAddress" EntitySet="BrokerAddress" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Broker">
+          <Key>
+            <PropertyRef Name="brokerid" />
+          </Key>
+          <Property Name="brokerid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="legacybrokeridvalue" Type="int" />
+          <Property Name="shortname" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="firstname" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="middlename" Type="varchar" MaxLength="64" />
+          <Property Name="lastName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="currentPhoneAreaCode" Type="int" />
+          <Property Name="currentPhoneNumber" Type="varchar" MaxLength="24" />
+          <Property Name="currentExtensionNumber" Type="int" />
+          <Property Name="userName" Type="varchar" MaxLength="64" />
+          <Property Name="email" Type="varchar" MaxLength="128" />
+          <Property Name="agencyName" Type="varchar" MaxLength="128" />
+          <Property Name="brokerguid" Type="uniqueidentifier" />
+          <Property Name="employeeguid" Type="uniqueidentifier" />
+          <Property Name="personguid" Type="uniqueidentifier" />
+          <Property Name="brokerPersonGuid" Type="uniqueidentifier" />
+          <Property Name="legacyGenID" Type="varchar" MaxLength="16" />
+          <Property Name="GeneralagencyID" Type="int" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="updatedDate" Type="datetime" Nullable="false" />
+          <Property Name="updatedBy" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BrokerRepresentativeID" Type="int" />
+          <Property Name="AddressID" Type="int" />
+          <Property Name="BP_BrokerId" Type="int" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="IsIncorporated" Type="bit" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrokerAddress">
+          <Key>
+            <PropertyRef Name="brokerid" />
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="addressTypeCode" />
+          </Key>
+          <Property Name="brokerid" Type="int" Nullable="false" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="addressTypeCode" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="effectiveDate" Type="datetime" />
+          <Property Name="terminateDate" Type="datetime" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="updatedDate" Type="datetime" Nullable="false" />
+          <Property Name="updatedBy" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="licenseID" />
+          </Key>
+          <Property Name="licenseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idvalue" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="name32" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="licenseType" Type="varchar" MaxLength="64" />
+          <Property Name="verified" Type="bit" Nullable="false" />
+          <Property Name="effectiveDate" Type="datetime" />
+          <Property Name="terminateDate" Type="datetime" />
+          <Property Name="licensetypeguid" Type="uniqueidentifier" />
+          <Property Name="licenseguid" Type="uniqueidentifier" />
+          <Property Name="stateCode" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="brokerid" Type="int" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="updatedDate" Type="datetime" Nullable="false" />
+          <Property Name="updatedBy" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_BROKER_LICENSED_LICENSE">
+          <End Role="Broker" Type="BrassModel.Store.Broker" Multiplicity="1" />
+          <End Role="License" Type="BrassModel.Store.License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="brokerid" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="brokerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Broker_LocatedAt_BrokerAddress">
+          <End Role="Broker" Type="BrassModel.Store.Broker" Multiplicity="1" />
+          <End Role="BrokerAddress" Type="BrassModel.Store.BrokerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="brokerid" />
+            </Principal>
+            <Dependent Role="BrokerAddress">
+              <PropertyRef Name="brokerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BrassModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BrassEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Brokers" EntityType="BrassModel.Broker" />
+          <EntitySet Name="BrokerAddresses" EntityType="BrassModel.BrokerAddress" />
+          <EntitySet Name="Licenses" EntityType="BrassModel.License" />
+          <AssociationSet Name="FK_BROKER_LICENSED_LICENSE" Association="BrassModel.FK_BROKER_LICENSED_LICENSE">
+            <End Role="Broker" EntitySet="Brokers" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Broker_LocatedAt_BrokerAddress" Association="BrassModel.FK_Broker_LocatedAt_BrokerAddress">
+            <End Role="Broker" EntitySet="Brokers" />
+            <End Role="BrokerAddress" EntitySet="BrokerAddresses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Broker">
+          <Key>
+            <PropertyRef Name="brokerid" />
+          </Key>
+          <Property Name="brokerid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="legacybrokeridvalue" Type="Int32" />
+          <Property Name="shortname" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="firstname" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="middlename" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="currentPhoneAreaCode" Type="Int32" />
+          <Property Name="currentPhoneNumber" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <Property Name="currentExtensionNumber" Type="Int32" />
+          <Property Name="userName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="agencyName" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="brokerguid" Type="Guid" />
+          <Property Name="employeeguid" Type="Guid" />
+          <Property Name="personguid" Type="Guid" />
+          <Property Name="brokerPersonGuid" Type="Guid" />
+          <Property Name="legacyGenID" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="GeneralagencyID" Type="Int32" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatedBy" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BrokerRepresentativeID" Type="Int32" />
+          <Property Name="AddressID" Type="Int32" />
+          <Property Name="BP_BrokerId" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsIncorporated" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Licenses" Relationship="BrassModel.FK_BROKER_LICENSED_LICENSE" FromRole="Broker" ToRole="License" />
+          <NavigationProperty Name="BrokerAddresses" Relationship="BrassModel.FK_Broker_LocatedAt_BrokerAddress" FromRole="Broker" ToRole="BrokerAddress" />
+        </EntityType>
+        <EntityType Name="BrokerAddress">
+          <Key>
+            <PropertyRef Name="brokerid" />
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="addressTypeCode" />
+          </Key>
+          <Property Name="brokerid" Type="Int32" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="addressTypeCode" Type="String" Nullable="false" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="effectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="terminateDate" Type="DateTime" Precision="3" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatedBy" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Broker" Relationship="BrassModel.FK_Broker_LocatedAt_BrokerAddress" FromRole="BrokerAddress" ToRole="Broker" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="licenseID" />
+          </Key>
+          <Property Name="licenseID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idvalue" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="name32" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="licenseType" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="verified" Type="Boolean" Nullable="false" />
+          <Property Name="effectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="terminateDate" Type="DateTime" Precision="3" />
+          <Property Name="licensetypeguid" Type="Guid" />
+          <Property Name="licenseguid" Type="Guid" />
+          <Property Name="stateCode" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="brokerid" Type="Int32" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatedBy" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Broker" Relationship="BrassModel.FK_BROKER_LICENSED_LICENSE" FromRole="License" ToRole="Broker" />
+        </EntityType>
+        <Association Name="FK_BROKER_LICENSED_LICENSE">
+          <End Role="Broker" Type="BrassModel.Broker" Multiplicity="1" />
+          <End Role="License" Type="BrassModel.License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="brokerid" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="brokerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Broker_LocatedAt_BrokerAddress">
+          <End Role="Broker" Type="BrassModel.Broker" Multiplicity="1" />
+          <End Role="BrokerAddress" Type="BrassModel.BrokerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="brokerid" />
+            </Principal>
+            <Dependent Role="BrokerAddress">
+              <PropertyRef Name="brokerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BrassModelStoreContainer" CdmEntityContainer="BrassEntities">
+          <EntitySetMapping Name="Brokers">
+            <EntityTypeMapping TypeName="BrassModel.Broker">
+              <MappingFragment StoreEntitySet="Broker">
+                <ScalarProperty Name="brokerid" ColumnName="brokerid" />
+                <ScalarProperty Name="legacybrokeridvalue" ColumnName="legacybrokeridvalue" />
+                <ScalarProperty Name="shortname" ColumnName="shortname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="middlename" ColumnName="middlename" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="currentPhoneAreaCode" ColumnName="currentPhoneAreaCode" />
+                <ScalarProperty Name="currentPhoneNumber" ColumnName="currentPhoneNumber" />
+                <ScalarProperty Name="currentExtensionNumber" ColumnName="currentExtensionNumber" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="agencyName" ColumnName="agencyName" />
+                <ScalarProperty Name="brokerguid" ColumnName="brokerguid" />
+                <ScalarProperty Name="employeeguid" ColumnName="employeeguid" />
+                <ScalarProperty Name="personguid" ColumnName="personguid" />
+                <ScalarProperty Name="brokerPersonGuid" ColumnName="brokerPersonGuid" />
+                <ScalarProperty Name="legacyGenID" ColumnName="legacyGenID" />
+                <ScalarProperty Name="GeneralagencyID" ColumnName="GeneralagencyID" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="BrokerRepresentativeID" ColumnName="BrokerRepresentativeID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="BP_BrokerId" ColumnName="BP_BrokerId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="IsIncorporated" ColumnName="IsIncorporated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrokerAddresses">
+            <EntityTypeMapping TypeName="BrassModel.BrokerAddress">
+              <MappingFragment StoreEntitySet="BrokerAddress">
+                <ScalarProperty Name="brokerid" ColumnName="brokerid" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="addressTypeCode" ColumnName="addressTypeCode" />
+                <ScalarProperty Name="effectiveDate" ColumnName="effectiveDate" />
+                <ScalarProperty Name="terminateDate" ColumnName="terminateDate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licenses">
+            <EntityTypeMapping TypeName="BrassModel.License">
+              <MappingFragment StoreEntitySet="License">
+                <ScalarProperty Name="licenseID" ColumnName="licenseID" />
+                <ScalarProperty Name="idvalue" ColumnName="idvalue" />
+                <ScalarProperty Name="name32" ColumnName="name32" />
+                <ScalarProperty Name="licenseType" ColumnName="licenseType" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="effectiveDate" ColumnName="effectiveDate" />
+                <ScalarProperty Name="terminateDate" ColumnName="terminateDate" />
+                <ScalarProperty Name="licensetypeguid" ColumnName="licensetypeguid" />
+                <ScalarProperty Name="licenseguid" ColumnName="licenseguid" />
+                <ScalarProperty Name="stateCode" ColumnName="stateCode" />
+                <ScalarProperty Name="brokerid" ColumnName="brokerid" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

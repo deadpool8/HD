@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Open+Sans+Condensed:300,700" rel="stylesheet" />
+    <link href="~/Content/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+ <body>
+     
+    <div id="logo" class="container">
+        @*<h1><span class="icon icon-lock icon-size"></span><a href="#">Justi<span>Fiable</span></a></h1>
+        <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>*@
+        <div id="parent">
+            <a href="http://www.benefitmall.com" target="_blank">
+                <img src="@Url.Content("~/Images/BM_logo.gif")" />
+            </a>
+        </div>
+        <section id="login">
+                @Html.Partial("_LoginPartial")
+        </section>
+@*        <div class="float-right">
+            <section id="login">
+                @Html.Partial("_LoginPartial")
+            </section>
+        </div> *@
+    </div>
+
+
+    @Html.Partial("_Menu")
+
+    @RenderBody();
+     
+    @*@RenderSection("featured", required: false)*@
+     
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+     <div id="copyright">
+         <p>&copy; @DateTime.Now.Year BenefitMall | All rights reserved. </p>
+     </div>
+
+    </body>
+</html>
+

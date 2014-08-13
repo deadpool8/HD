@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{209B39BA-545F-4347-9B14-A590CF980614}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BenefitMall.HDQuery.Domain</RootNamespace>
+    <AssemblyName>BenefitMall.HDQuery.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BmallDnn.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BmallDnn.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BmallDnn.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BmallDnn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BmallDnn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BmallDnn.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Brass.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brass.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brass.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brass.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brass.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Broker.cs">
+      <DependentUpon>Brass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerAddress.cs">
+      <DependentUpon>Brass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="License.cs">
+      <DependentUpon>Brass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>BmallDnn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMapping.cs">
+      <DependentUpon>BmallDnn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPortal.cs">
+      <DependentUpon>BmallDnn.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="Brass.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Brass.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="BmallDnn.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BmallDnn.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BmallDnn.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BmallDnn.edmx</DependentUpon>
+      <LastGenOutput>BmallDnn.Context.cs</LastGenOutput>
+    </None>
+    <None Include="BmallDnn.edmx.diagram">
+      <DependentUpon>BmallDnn.edmx</DependentUpon>
+    </None>
+    <None Include="BmallDnn.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BmallDnn.edmx</DependentUpon>
+      <LastGenOutput>BmallDnn.cs</LastGenOutput>
+    </None>
+    <None Include="Brass.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Brass.edmx</DependentUpon>
+      <LastGenOutput>Brass.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Brass.edmx.diagram">
+      <DependentUpon>Brass.edmx</DependentUpon>
+    </None>
+    <None Include="Brass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Brass.edmx</DependentUpon>
+      <LastGenOutput>Brass.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
